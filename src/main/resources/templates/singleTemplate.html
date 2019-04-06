@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <th>lp.</th>
+    <th>Marka</th>
+    <th>Model</th>
+    <th>Rocznik</th>
+    <th>Cena</th>
+    <th>Przebieg</th>
+    </thead>
+    <tbody>
+    <tr th:each="samochod, iterStat : ${list}" th:if="${samochod.}">
+        <td th:text="${iterStat.index}"></td>
+        <td th:text="${samochod.marka}"></td>
+        <td th:text="${samochod.model}"></td>
+        <td th:text="${samochod.rocznik}"></td>
+        <td th:text="${samochod.cena}"></td>
+        <td th:text="${samochod.przebieg}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
