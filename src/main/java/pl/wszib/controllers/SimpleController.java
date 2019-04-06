@@ -21,10 +21,10 @@ public class SimpleController {
         return "carTemplate";
     }
 
-    @RequestMapping(value="/single/{index}", method = RequestMethod.GET)
+    @GetMapping("car/single/{index}")
     public String sinlge (Model model, @PathVariable("index") int index){
         List<Samochod> list = generateList();
-        model.addAttribute("list", list.get(index));
+        Samochod samochod = list.get(index);
         return "singleTemplate";
     }
     private List<Samochod> generateList() {
