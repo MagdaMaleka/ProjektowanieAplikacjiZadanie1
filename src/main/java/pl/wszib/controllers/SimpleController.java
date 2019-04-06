@@ -2,10 +2,7 @@ package pl.wszib.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import pl.wszib.domain.Samochod;
 
 import java.util.ArrayList;
@@ -14,10 +11,34 @@ import java.util.List;
 @Controller
 public class SimpleController {
 
+    private List<Samochod> listSamochod;
+
+    public SimpleController() {
+        listSamochod = generateList();
+    }
+
+    @GetMapping("forms")
+    public String forms(Model model){
+        model.addAttribute("samochod", new Samochod());
+        return "formsTemplate";
+    }
+
+    @GetMapping("links")
+    public String links (Model model){
+
+        return "linksTemplate";
+    }
+
+    @PostMapping("formsSave")
+    public String formsSave (Samochod samochod, Model model){
+        listSamochod.add(samochod);
+        return "successTemplate";
+    }
+
     @GetMapping("car")
     public String car(Model model){
         List<Samochod> list = generateList();
-        model.addAttribute("list", list);
+        model.addAttribute("list", listSamochod);
         return "carTemplate";
     }
 
